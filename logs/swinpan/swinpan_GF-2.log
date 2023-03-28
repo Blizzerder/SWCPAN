@@ -1,0 +1,61 @@
+2023-03-07 14:14:42,085 - mmFusion - INFO - Config:
+name = 'swinpan_GF-2'
+description = 'test panformer on PSData3/GF-2 dataset'
+model_type = 'SwinPan'
+work_dir = 'data/PSData3/model_out/swinpan_GF-2'
+log_dir = 'logs/swinpan'
+log_file = 'logs/swinpan/swinpan_GF-2.log'
+log_level = 'INFO'
+only_test = False
+aug_dict = dict(lr_flip=0.5, ud_flip=0.5)
+ms_chans = 4
+bit_depth = 10
+train_set_cfg = dict(
+    dataset=dict(
+        type='PSDataset',
+        image_dirs=['data/PSData3/Dataset/Dataset/WV-3/train_res'],
+        bit_depth=10),
+    num_workers=8,
+    batch_size=8,
+    shuffle=True)
+test_set1_cfg = dict(
+    dataset=dict(
+        type='PSDataset',
+        image_dirs=['data/PSData3/Dataset/Dataset/WV-3/test_res_small'],
+        bit_depth=10),
+    num_workers=4,
+    batch_size=1,
+    shuffle=False)
+seed = 19971118
+cuda = True
+max_iter = 20000
+save_freq = 10000
+test_freq = 10000
+eval_freq = 10000
+norm_input = False
+optim_cfg = dict(core_module=dict(type='Adam', betas=(0.9, 0.999), lr=0.0001))
+sched_cfg = dict(step_size=10000, gamma=0.99)
+loss_cfg = dict(rec_loss=dict(type='l1', w=1.0))
+model_cfg = dict(
+    core_module=dict(
+        n_feats=64,
+        n_heads=8,
+        head_dim=8,
+        win_size=4,
+        n_blocks=3,
+        cross_module=['pan', 'ms'],
+        cat_feat=['pan', 'ms']))
+
+2023-03-07 14:14:42,086 - mmFusion - INFO - ===> Setting Random Seed
+2023-03-07 14:14:42,088 - mmFusion - INFO - ===> Loading Datasets
+2023-03-07 14:14:42,298 - mmFusion - INFO - ===> Building Model
+2023-03-07 14:14:48,369 - mmFusion - INFO - ===> Setting GPU
+2023-03-07 14:15:06,982 - mmFusion - INFO - ===> Weight Initializing
+2023-03-07 14:15:06,983 - mmFusion - INFO - ===> Setting Optimizer
+2023-03-07 14:15:06,988 - mmFusion - INFO - ===> Setting Scheduler
+2023-03-07 14:15:06,989 - mmFusion - INFO - ===> Params Count
+2023-03-07 14:15:06,994 - mmFusion - INFO - total params of "core_module": 1009452
+2023-03-07 14:15:06,994 - mmFusion - INFO - total params: 1009452
+2023-03-07 14:15:06,999 - mmFusion - INFO - total trainable params of "core_module": 1009452
+2023-03-07 14:15:06,999 - mmFusion - INFO - total trainable params: 1009452
+2023-03-07 14:15:07,000 - mmFusion - INFO - ===> Training Start
