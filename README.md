@@ -3,13 +3,16 @@ SWCPAN: A HYBRID NETWORK OF SWIN TRANSFORMER AND CNN FOR PAN-SHARPENING
 
 ## Introduction
 SWCPAN comprises a shallow feature extraction module, a deep feature extraction module and an image reconstruction module. Specifically, the shallow feature extraction module is based on convolutional layers, whereas the deep feature extraction module is composed of several Swin Transformer blocks (STB) that exploit the local attention and shifted windowing scheme of Swin Transformer to improve the quality of the generated images. Experimental results on GaoFen-2 and WorldView-3 datasets demonstrate that our SWCPAN outperforms most state-of-the-art methods in several metrics.
+
 ![overview](/Figs/overview.jpg)
 
 <img src="/Figs/STB.jpg" width="49%"> <img src="/Figs/IRM.jpg" width="49%">
 
 ## Qualitative results
 <b>Figure Order：1.BICUBIC  2.PNN 3.PAN-Net 4.MSDCNN  5.PANFormer 6.SWCPAN(Proposed)  7.GroundTruth
-
+  
+You can visit "/Qualitative/gf2" or "/Qualitative/wv3" to view or download the figures.</b>
+  
 ### GaoFen-2
 <img src="/Qualitative/gf2/1bicubic.png" width="13%"> <img src="/Qualitative/gf2/1PNN.png" width="13%"> <img src="/Qualitative/gf2/1PANNET.png" width="13%"> <img src="/Qualitative/gf2/1MSDCNN.png" width="13%"> <img src="/Qualitative/gf2/1PANFORMER.png" width="13%"> <img src="/Qualitative/gf2/1SWINPAN.png" width="13%"> <img src="/Qualitative/gf2/1groudtruth.png" width="13%">
 
